@@ -1,3 +1,3 @@
-# Cubethon_Custom
+# Cubethon
 
-https://aiarcost.github.io/Cubethon_Custom/
+https://aiarcost.github.io/AA_Cubethon/
