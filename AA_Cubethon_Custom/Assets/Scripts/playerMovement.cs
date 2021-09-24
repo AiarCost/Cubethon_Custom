@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
@@ -9,7 +10,8 @@ public class playerMovement : MonoBehaviour
     public float AddingForce = 50f;
     public float sidewayForce = 500f;
 
- 
+    public CommandUI commandUI;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -29,12 +31,28 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            rb.AddForce(sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            //Command code to give replay section
+            Command moveRight = new MoveRight(rb, sidewayForce);
+            Invoker invoker = new Invoker();
+            invoker.SetCommand(moveRight);
+            invoker.ExecuteCommand();
+
+            commandUI.AddToText(moveRight.ToString());
+
+            //rb.AddForce(sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey("a"))
         {
-            rb.AddForce(-sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            //Command code to give replay section
+            Command moveLeft = new MoveLeft(rb, sidewayForce);
+            Invoker invoker = new Invoker();
+            invoker.SetCommand(moveLeft);
+            invoker.ExecuteCommand();
+
+            commandUI.AddToText(moveLeft.ToString());
+
+           // rb.AddForce(-sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
         if (rb.position.y < -1)

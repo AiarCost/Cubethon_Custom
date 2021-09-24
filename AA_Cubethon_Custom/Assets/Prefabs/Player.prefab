@@ -130,6 +130,7 @@ MonoBehaviour:
   forwardForce: 0
   AddingForce: 50
   sidewayForce: 100
+  commandUI: {fileID: 0}
 --- !u!114 &447870310
 MonoBehaviour:
   m_ObjectHideFlags: 0
