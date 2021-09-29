@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerCollision : MonoBehaviour
+public class PlayerCollision : MonoBehaviour
 {
     public playerMovement movement;
+
+    public delegate void CollisionOccured();
+    public static event CollisionOccured OnCollisionOccured;
 
     private void OnCollisionEnter(Collision col)
     {
@@ -14,6 +17,14 @@ public class playerCollision : MonoBehaviour
 
             FindObjectOfType<GameManager>().GameOver();
 
+            if(OnCollisionOccured != null)
+            { 
+                OnCollisionOccured();
+            }
+            else
+            {
+                Debug.Log("Collision has no subscribers");
+            }
         }
     }
 }

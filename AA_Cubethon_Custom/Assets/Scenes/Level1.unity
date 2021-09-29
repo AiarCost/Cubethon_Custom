@@ -1494,6 +1494,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7718757779831209942, guid: b524d5ae671bcce4982c9a4784a0d17c, type: 3}
   m_PrefabInstance: {fileID: 350295305}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1421070739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2681489869906047454, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}
+  m_PrefabInstance: {fileID: 4909947983367900236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1454659734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,6 +2293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2681489869906047454, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4909947983748659494, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2336,9 +2345,17 @@ PrefabInstance:
       propertyPath: commandUI
       value: 
       objectReference: {fileID: 1454659736}
+    - target: {fileID: 4909947983748659495, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}
+      propertyPath: ParticlesGO
+      value: 
+      objectReference: {fileID: 1421070739}
     - target: {fileID: 4909947983748659497, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662303428827648762, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}
+      propertyPath: prewarm
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0410e6fbee013814aa5520cc87d44e61, type: 3}

@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
         if (gameHasEnded == false)
         {
             gameHasEnded = true;
-            Debug.Log("Number of commands to replay :" + CommandLog.commands.Count);
             Invoke("Restart", restartDelay);
         }
 

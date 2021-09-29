@@ -12,6 +12,12 @@ public class playerMovement : MonoBehaviour
 
     public CommandUI commandUI;
 
+    public GameObject ParticlesGO;
+
+    void OnEnable()
+    {
+        PlayerCollision.OnCollisionOccured += Particles;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -60,4 +66,15 @@ public class playerMovement : MonoBehaviour
             FindObjectOfType<GameManager>().GameOver();
         }
     }
+
+
+    void Particles()
+    {
+        PlayerCollision.OnCollisionOccured -= Particles;
+
+        //Enable the particle system for the player
+        ParticlesGO.SetActive(true);
+    
+    }
+
 }
