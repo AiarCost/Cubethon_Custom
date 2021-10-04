@@ -14,9 +14,14 @@ public class playerMovement : MonoBehaviour
 
     public GameObject ParticlesGO;
 
+    public delegate void PlayerExplosion();
+    public static event PlayerExplosion playerExplosion;
+    public GameObject ExplosionParticles;
+
     void OnEnable()
     {
         PlayerCollision.OnCollisionOccured += Particles;
+        playerExplosion += PlayerExploding;
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -61,9 +66,18 @@ public class playerMovement : MonoBehaviour
            // rb.AddForce(-sidewayForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
 
-        if (rb.position.y < -1)
-        {
+        if (transform.position.y < -1 && rb.useGravity == true) { 
+
+
+            playerExplosion();
+            
             FindObjectOfType<GameManager>().GameOver();
+        }
+
+        if(transform.position.y > 3)
+        {
+
+            playerExplosion();
         }
     }
 
@@ -75,6 +89,18 @@ public class playerMovement : MonoBehaviour
         //Enable the particle system for the player
         ParticlesGO.SetActive(true);
     
+    }
+
+
+    void PlayerExploding()
+    {
+
+        playerExplosion -= PlayerExploding;
+        rb.useGravity = false;
+        rb.velocity = new Vector3(0, 0, 0);
+
+        ExplosionParticles.SetActive(true);
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
 }

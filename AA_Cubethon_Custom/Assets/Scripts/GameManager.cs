@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     float replayStartTime;
     public GameObject ReplayText;
 
-
+    private void OnEnable()
+    {
+        Score.nextLevel += CompleteLevel;
+    }
     private void Start()
     {
         ReplayText.SetActive(false);
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        Score.nextLevel -= CompleteLevel;
         competeLevelUI.SetActive(true);
     }
 
